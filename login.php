@@ -13,6 +13,15 @@ if(!empty($_POST)){
 ?>
 <h1>登入頁面</h1>
 <!-- <form action="?" method="post"> -->
+<?php
+if(isset($_GET['error'])){
+    echo "<span style='color:red'>";
+    echo $_GET['error'];
+    echo "</span>";
+}
+
+
+?>
 <form action="check.php" method="post">
     <div>
         <label for="acc">帳號:</label>
