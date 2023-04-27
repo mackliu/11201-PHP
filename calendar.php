@@ -62,10 +62,17 @@ if($month==12){
 <div>六</div>
 <?php
 for($i=0;$i<count($days);$i++){
-    echo "<div> {$days[$i]} </div>";
+    $today=date("d");
+    if($today==$days[$i]){
+
+        echo "<div class='today'> {$days[$i]} </div>";
+    }else{
+        echo "<div> {$days[$i]} </div>";
+    }
 }
 
-?>
-
-    
+?>    
+</div>
+<div>
+    <a href="?year=<?=date("Y");?>&month=<?=date("n");?>">回當前月</a>
 </div>

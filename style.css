@@ -25,3 +25,7 @@ td {
     margin-left: 1px;
     margin-top: 1px;
 }
+
+.today{
+    background: lightgreen;
+}
