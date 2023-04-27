@@ -3,9 +3,17 @@
 
 if(!empty($_GET)){
     echo "以下資料為GET表單的資料<br>";
-    echo "<pre>";
-    print_r($_GET);
-    echo "</pre>";
+    $age=$_GET['age'];
+    echo "你的年紀為".$age."<br>";
+    if($age>=45){
+        echo "屬於中高齡";
+    }else if($age>=35){
+        echo "屬於中年人";
+    }else if($age>=25){
+        echo "屬於青年";
+    }else{
+        echo "屬於少年";
+    }
 }
 
 if(!empty($_POST)){
