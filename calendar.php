@@ -1,19 +1,10 @@
-<style>
-    table{
-        border-collapse: collapse;
-        /* border-spacing: 0; */
-    }
-    td{
-        border:1px solid gray;
-        padding:5px 10px;
-        
-    }
-    
-</style>
+<link rel="stylesheet" href="style.css">
+
+
 <h2>月曆</h2>
 <?php
+$month=(isset($_GET['month']))?$_GET['month']:date("n");    //取得當前的月份
 $today=strtotime("now");    //取得當前的時間秒數
-$month=date("n",$today);    //取得當前的月份
 $days=date("t",$today);     //取得當前月份的總天數
 $firstDate=date("Y-n-1",$today);    //取得當前月份第一天
 $finalDate=date("Y-n-t",$today);    //取得當前月份最後一天
@@ -37,24 +28,7 @@ for($i=0;$i<$weeks;$i++){
 }
 
 ?>
-<style>
-  .calendar > div{
-        border:1px solid #ccc;
-        width:calc(100% / 7);
-        box-sizing: border-box;
-        margin-left:-1px;
-        margin-top:-1px;
 
-    }
-.calendar{
-    display:flex;
-    flex-wrap: wrap;
-    width:50%;
-    margin-left:1px;
-    margin-top:1px;
-}
-
-</style>
 <div>
 <a href="prev.php"><?=$month-1;?>月</a>
 

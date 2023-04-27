@@ -1,0 +1,27 @@
+table {
+    border-collapse: collapse;
+    /* border-spacing: 0; */
+}
+
+td {
+    border: 1px solid gray;
+    padding: 5px 10px;
+
+}
+
+.calendar>div {
+    border: 1px solid #ccc;
+    width: calc(100% / 7);
+    box-sizing: border-box;
+    margin-left: -1px;
+    margin-top: -1px;
+
+}
+
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-left: 1px;
+    margin-top: 1px;
+}
