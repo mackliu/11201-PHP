@@ -3,6 +3,7 @@
 
 <form action="target.php" method="get">
     <input type="text" name="addr" id="name">
+    <input type="text" name="name" id="name">
     <input type="submit" value="送出">
 </form>
 
