@@ -3,9 +3,10 @@
 <h2>月曆</h2>
 <?php
 $month=$_GET['month']??date("n");    //取得當前的月份
-$firstDateTime=strtotime(date("Y-".$month."-1"));    //取得當前月份第一天
+$year=$_GET['year']??date("Y"); //取得年份;
+$firstDateTime=strtotime("$year-$month-1");    //取得當前月份第一天
 $days=date("t",$firstDateTime);     //取得當前月份的總天數
-$finalDateTime=strtotime(date("Y-n-t",$firstDateTime));    //取得當前月份最後一天
+$finalDateTime=strtotime("$year-$month-$days");    //取得當前月份最後一天
 $firstDateWeek=date("w",$firstDateTime); //取得當前月份第一天的星期
 $finalDateWeek=date("w",$finalDateTime); //取得當前月份最後一天的星期
 $weeks=ceil(($days+$firstDateWeek)/7);  //計算當前月份的天數會佔幾周
@@ -25,17 +26,31 @@ for($i=0;$i<$weeks;$i++){
     }
 }
 
-$prevMonth=$month-1;
-$nextMonth=$month+1;
 
+
+if($month==1){
+    $prevYear=$year-1;
+    $prevMonth=12;
+}else{
+    $prevYear=$year;
+    $prevMonth=$month-1;
+}
+
+if($month==12){
+    $nextYear=$year+1;
+    $nextMonth=1;
+}else{
+    $nextYear=$year;
+    $nextMonth=$month+1;
+}
 ?>
 
 <div>
-<a href="calendar.php?month=<?=$prevMonth;?>"><?=$prevMonth;?>月</a>
+<a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>"><?=$prevMonth;?>月</a>
 
 <span><?=$month;?>月</span>
 
-<a href="calendar.php?month=<?=$nextMonth;?>"><?=$nextMonth;?>月</a>
+<a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>"><?=$nextMonth;?>月</a>
 </div>
 <div class='calendar'>
 <div>日</div>
