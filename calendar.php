@@ -27,6 +27,12 @@ for($i=0;$i<$weeks;$i++){
     }
 }
 
+$holiday=[
+    '2023-5-1'=>"勞動節",
+    '2024-5-1'=>"勞動節",
+    '2022-5-1'=>"勞動節",
+];
+
 
 
 if($month==1){
@@ -66,13 +72,37 @@ for($i=0;$i<count($days);$i++){
     $today=date("Y-n-j");
     $d=($days[$i]!='&nbsp;')?explode('-',$days[$i])[2]:'&nbsp;';
 
-    if($today==$days[$i]){    
-        echo "<div class='today'> {$d} </div>";
+    if($today==$days[$i]){
+        if(isset($holiday[$days[$i]])){
+            echo "<div class='today'> {$d}";
+            echo "  <div>";
+            echo $holiday[$days[$i]];
+            echo "  </div>";
+            echo "</div>";
+        }else{
+            echo "<div class='today'> {$d} </div>";
+        }
     }else if(date("w",strtotime($days[$i]))==0 || date("w",strtotime($days[$i]))==6){
-        echo "<div class='weekend'> {$d} </div>";
-    }else{
-        echo "<div> {$d} </div>";
 
+        if(isset($holiday[$days[$i]])){
+            echo "<div class='weekend'> {$d}";
+            echo "  <div>";
+            echo $holiday[$days[$i]];
+            echo "  </div>";
+            echo "</div>";
+        }else{
+            echo "<div class='weekend'> {$d} </div>";
+        }
+    }else{
+        if(isset($holiday[$days[$i]])){
+            echo "<div> {$d}";
+            echo "  <div>";
+            echo $holiday[$days[$i]];
+            echo "  </div>";
+            echo "</div>";
+        }else{
+            echo "<div> {$d} </div>";
+        }
     }
 }
 
