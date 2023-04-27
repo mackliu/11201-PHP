@@ -19,9 +19,10 @@ for($i=0;$i<$weeks;$i++){
     for($j=0;$j<7;$j++){
         //判斷當周是否為第一周或最後一周
         if(($i==0 && $j<$firstDateWeek) || (($i==$weeks-1) && $j>$finalDateWeek)){
-            $days[]='&nbsp';
+            $days[]='&nbsp;';
         }else{
-            $days[]=$j+7*$i-$firstWeekSpace;
+
+            $days[]=$year . "-" . $month . "-" . ($j+7*$i-$firstWeekSpace);
         }
     }
 }
@@ -62,12 +63,16 @@ if($month==12){
 <div>六</div>
 <?php
 for($i=0;$i<count($days);$i++){
-    $today=date("d");
-    if($today==$days[$i]){
+    $today=date("Y-n-j");
+    $d=($days[$i]!='&nbsp;')?explode('-',$days[$i])[2]:'&nbsp;';
 
-        echo "<div class='today'> {$days[$i]} </div>";
+    if($today==$days[$i]){    
+        echo "<div class='today'> {$d} </div>";
+    }else if(date("w",strtotime($days[$i]))==0 || date("w",strtotime($days[$i]))==6){
+        echo "<div class='weekend'> {$d} </div>";
     }else{
-        echo "<div> {$days[$i]} </div>";
+        echo "<div> {$d} </div>";
+
     }
 }
 
